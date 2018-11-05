@@ -38,14 +38,14 @@ class Attachment extends AbstractEntity
 
     /**
      * @var string
-     * @Groups({"get"})
+     * @Groups({"get","post","update"})
      * @Type("string")
      */
     protected $contentType;
 
     /**
      * @var string
-     * @Groups({"get"})
+     * @Groups({"get","post","update"})
      * @Type("string")
      */
     protected $fileName;
@@ -98,11 +98,27 @@ class Attachment extends AbstractEntity
     }
 
     /**
+     * @param string $contentType
+     */
+    public function setContentType($contentType)
+    {
+        $this->contentType = $contentType;
+    }
+
+    /**
      * @return string
      */
     public function getFileName()
     {
         return $this->fileName;
+    }
+
+    /**
+     * @param string $fileName
+     */
+    public function setFileName($fileName)
+    {
+        $this->fileName = $fileName;
     }
 
     /**
