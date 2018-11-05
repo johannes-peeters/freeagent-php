@@ -6,6 +6,7 @@ use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use SixBySix\Freeagent\Entity\AbstractEntity;
 use SixBySix\Freeagent\Entity\AbstractEntityFilter;
+use SixBySix\Freeagent\Entity\Attachment;
 use SixBySix\Freeagent\Entity\BankAccount;
 use SixBySix\Freeagent\Entity\BankTransaction;
 use SixBySix\Freeagent\Entity\BankTransactionExplanation;
@@ -226,6 +227,14 @@ class Api
         return $this->getOneResourceByUrl(
             $this->getUrl('company')
         );
+    }
+
+    /**
+     * @return Attachment
+     */
+    public function attachment()
+    {
+        return $this->entityFactory(new Attachment());
     }
 
     /**
