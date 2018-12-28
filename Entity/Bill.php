@@ -83,7 +83,7 @@ class Bill extends AbstractEntity
     /**
      * @var Category
      * @Groups({"get", "post", "update"})
-     * @Type("SixBySix\Freeagent\Entity\Attachment")
+     * @Type("SixBySix\Freeagent\Entity\Category")
      */
     protected $categoryEntity;
 
