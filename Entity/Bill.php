@@ -46,6 +46,8 @@ class Bill extends AbstractEntity
 
     /**
      * @var Contact
+     * @Groups({"get", "post", "update"})
+     * @Type("SixBySix\Freeagent\Entity\Contact")
      */
     protected $contactEntity;
 
@@ -80,6 +82,8 @@ class Bill extends AbstractEntity
 
     /**
      * @var Category
+     * @Groups({"get", "post", "update"})
+     * @Type("SixBySix\Freeagent\Entity\Attachment")
      */
     protected $categoryEntity;
 
@@ -182,7 +186,7 @@ class Bill extends AbstractEntity
 
     /**
      * @var Attachment
-     * @Group({"get", "post", "update"})
+     * @Groups({"get", "post", "update"})
      * @Type("SixBySix\Freeagent\Entity\Attachment")
      */
     protected $attachment;
@@ -241,10 +245,12 @@ class Bill extends AbstractEntity
 
     /**
      * @param string $project
+     * @return Bill
      */
     public function setProjectUrl($project)
     {
         $this->project = $project;
+        return $this;
     }
 
     /**
@@ -259,6 +265,17 @@ class Bill extends AbstractEntity
     }
 
     /**
+     * @param Project $project
+     * @return Bill
+     */
+    public function setProject(Project $project)
+    {
+        $this->projectEntity = $project;
+        $this->project = $project->getUrl();
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getContactUrl()
@@ -268,10 +285,12 @@ class Bill extends AbstractEntity
 
     /**
      * @param string $contact
+     * @return Bill
      */
     public function setContactUrl($contact)
     {
         $this->contact = $contact;
+        return $this;
     }
 
     /**
@@ -283,6 +302,17 @@ class Bill extends AbstractEntity
             $this->contactEntity = $this->getApi()->getOneResourceByUrl($this->getContactUrl());
         }
         return $this->contactEntity;
+    }
+
+    /**
+     * @param Contact $contact
+     * @return Bill
+     */
+    public function setContact(Contact $contact)
+    {
+        $this->contactEntity = $contact;
+        $this->contact = $contact->getUrl();
+        return $this;
     }
 
     /**
@@ -343,10 +373,12 @@ class Bill extends AbstractEntity
 
     /**
      * @param string $category
+     * @return Bill
      */
     public function setCategoryUrl($category)
     {
         $this->category = $category;
+        return $this;
     }
 
     /**
@@ -358,6 +390,17 @@ class Bill extends AbstractEntity
             $this->categoryEntity = $this->getApi()->getOneResourceByUrl($this->getCategoryUrl());
         }
         return $this->categoryEntity;
+    }
+
+    /**
+     * @param Category $categoryEntity
+     * @return Bill
+     */
+    public function setCategory($category)
+    {
+        $this->categoryEntity = $category;
+        $this->category = $category->getUrl();
+        return $this;
     }
 
     /**
